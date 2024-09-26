@@ -2,7 +2,7 @@ function askAssistant() {
     const question = document.getElementById("question").value;
     if (!question) return;
 
-    // Display user's message
+    // Display a user's message
     const chatMessages = document.getElementById("chatMessages");
     const userMessage = document.createElement("div");
     userMessage.classList.add("chat-message", "user-message");

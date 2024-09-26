@@ -2,15 +2,13 @@ from flask import Flask, request, jsonify, render_template
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
 import torch
 
-# Initialize Flask app
 app = Flask(__name__, template_folder='templates')
 
-# Load your fine-tuned GPT-2 model using the absolute path
+# Load GPT-2 model using the absolute path
 model = GPT2LMHeadModel.from_pretrained('/Users/audrey/H-1B Insights AI/fine_tuned_gpt2')
 tokenizer = GPT2Tokenizer.from_pretrained('/Users/audrey/H-1B Insights AI/fine_tuned_gpt2')
 model.eval()  # Set the model to evaluation mode
 
-# Move model to GPU if available
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 model.to(device)
 
