@@ -5,7 +5,8 @@
 This repository contains a fine-tuned **GPT-2** model focused on **H-1B visa application data**, designed to generate coherent and context-specific responses related to visa processes, trends, and insights. The model was fine-tuned using the **Hugging Face Transformers** library and deployed via a **Flask web application** for real-time user interaction.
 
 
-<img width="744" alt="Screenshot 2024-09-26 at 4 48 56 AM" src="https://github.com/user-attachments/assets/eeea324d-7092-467c-bccb-3e19de7370e7">
+![Uploading Screenshot 2024-09-26 at 4.48.56 AM.png…]()
+
 
 
 ## Key Features
