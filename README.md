@@ -7,29 +7,29 @@ This repository contains a fine-tuned **GPT-2** model focused on **H-1B visa app
 
 
 ## Key Features
-- **Fine-Tuned GPT-2 Model**: This project demonstrates the fine-tuning of **GPT-2**, one of the most widely used **Large Language Models (LLMs)**, on domain-specific data related to H-1B visa applications.
-- **Custom Dataset Processing**: Extensive preprocessing of real-world H-1B data, including data cleaning, normalization, and transformation into structured sentences for efficient training.
-- **Real-Time Deployment with Flask**: The model is deployed using a **Flask** backend, allowing users to query the fine-tuned GPT-2 model in real-time.
-- **Controlled Text Generation**: Implemented advanced settings for text generation, including **top-k sampling**, **nucleus sampling (top-p)**, **temperature scaling**, and **repetition penalty** to ensure diverse, meaningful responses.
+- **Fine-Tuned GPT-2 Model**: This project demonstrates the fine-tuning of **GPT-2**, an open source **Large Language Models (LLMs)**, on specific data related to H-1B visa applications.
+- **Custom Dataset Processing**: Preprocessing of real-world H-1B data, including data cleaning.
+- **Real-Time Deployment with Flask**: The model is deployed using a **Flask** backend, allowing users to query the model in real-time.
+- **Controlled Text Generation**: Implemented settings for text generation, including **top-k sampling**, **nucleus sampling (top-p)**, **temperature scaling**, and **repetition penalty**.
 - **Interactive Interface**: Users can interact with the model through a user-friendly interface.
-- **Model Training and Optimization**: Utilized **PyTorch** and **Hugging Face** frameworks for efficient model training, with techniques such as **gradient accumulation** and loss minimization to optimize performance.
+- **Model Training and Optimization**: Utilized **PyTorch** and **Hugging Face** frameworks for model training, with techniques such as **gradient accumulation** and loss minimization to optimize performance.
 
 ## Project Workflow
 
 1. **Data Collection & Preprocessing**:
-   - H-1B visa data was sourced from publicly available datasets.
+   - H-1B visa data was sourced from Kaggle.
    - The dataset was cleaned, and essential fields such as **case status**, **employer name**, **prevailing wage**, and **visa class** were extracted.
    - Data was transformed into a format suitable for language model training, generating over 150,000 structured sentences.
 
 2. **Fine-Tuning the GPT-2 Model**:
-   - The GPT-2 model was fine-tuned on domain-specific H-1B visa sentences using **transfer learning**.
+   - The GPT-2 model was fine-tuned on H-1B visa sentences using **transfer learning**.
    - Training was conducted using **PyTorch**, with techniques like **learning rate scheduling** and **AdamW optimizer**.
    - Model checkpoints and final versions were saved for deployment.
 
 3. **Deployment with Flask**:
-   - A Flask web application was built to serve the fine-tuned model.
+   - A Flask web application was built to display the fine-tuned model.
    - The model is queried in real-time.
-   - The application is structured for easy scalability and potential deployment to cloud services such as **AWS** or **Google Cloud**.
+   - The application is structured for scalability and deployment to cloud services such as **AWS** or **Google Cloud**.
 
 ## Getting Started
 
@@ -73,10 +73,9 @@ Navigate to `http://localhost:5000` to interact with the model.
 - **Flask**: Developed a lightweight web app for real-time interaction with the model.
 
 ## Data Source:
-The data used for fine-tuning the GPT-2 model comes from the H-1B Visa Applications dataset. This dataset provides detailed information on H-1B visa applications from various employers across multiple years. You can access the dataset here: https://www.kaggle.com/datasets/nsharan/h-1b-visa
+The data used for fine-tuning the GPT-2 model comes from the H-1B Visa Applications dataset. This dataset provides detailed information on H-1B visa applications spanning multiple years. You can access the dataset here: https://www.kaggle.com/datasets/nsharan/h-1b-visa
 
 ## Future Enhancements
 
-- **Cloud Deployment**: Deploy the model to **AWS Lambda**, **Google Cloud**, or **Azure** for scalable real-time interaction.
-- **Expanded Dataset**: Fine-tune the model on a broader range of visa-related data to enhance response diversity.
-- **Improved Query Processing**: Implement NLP techniques for more sophisticated question understanding and response generation.
+- **Cloud Deployment**: Deploy the model to **AWS Lambda**, **Google Cloud**, or **Azure**
+- **Expanded Dataset**: Fine-tune the model on a broader range of visa-related data
