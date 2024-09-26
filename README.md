@@ -64,19 +64,13 @@ python main.py
 
 Navigate to `http://localhost:5000` to interact with the model.
 
-## Example Queries
 
-- *"Can you tell me about the H-1B visa process?"*
-- *"What are the trends in H-1B visa approvals over the last five years?"*
-- *"What are the common job titles for H-1B visa holders?"*
 
 ## Key Technologies
 
-- **Transformers**: Leveraged the **Hugging Face Transformers** library for model fine-tuning and deployment.
+- **Transformers**: **Hugging Face Transformers** library for model fine-tuning and deployment.
 - **PyTorch**: Used as the core framework for model training and optimization.
-- **Flask**: Developed a lightweight web app for real-time interaction with the fine-tuned GPT-2 model.
-- **Git LFS**: Used for tracking large files like the fine-tuned model weights.
-- **Data Preprocessing**: Performed advanced data cleaning and feature engineering for generating training data.
+- **Flask**: Developed a lightweight web app for real-time interaction with the model.
 
 ## Data Source:
 The data used for fine-tuning the GPT-2 model comes from the H-1B Visa Applications dataset. This dataset provides detailed information on H-1B visa applications from various employers across multiple years. You can access the dataset here: https://www.kaggle.com/datasets/nsharan/h-1b-visa
