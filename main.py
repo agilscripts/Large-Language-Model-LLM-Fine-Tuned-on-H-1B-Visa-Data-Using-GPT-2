@@ -1,41 +1,39 @@
 from flask import Flask, request, jsonify, render_template
-from openai import OpenAI
-import os
-from dotenv import load_dotenv
+from transformers import GPT2LMHeadModel, GPT2Tokenizer
+import torch
 
-# Load the OpenAI API key from .env file
-load_dotenv()
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
+# Initialize Flask app
 app = Flask(__name__, template_folder='templates')
 
-# Route to render the front end (index.html)
+# Load your fine-tuned GPT-2 model using the absolute path
+model = GPT2LMHeadModel.from_pretrained('/Users/audrey/H-1B Insights AI/fine_tuned_gpt2')
+tokenizer = GPT2Tokenizer.from_pretrained('/Users/audrey/H-1B Insights AI/fine_tuned_gpt2')
+model.eval()  # Set the model to evaluation mode
+
+# Move model to GPU if available
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+model.to(device)
+
 @app.route('/')
 def index():
     return render_template('index.html')
 
-# Handle POST request from the front end to get a response from GPT-4
 @app.route('/ask', methods=['POST'])
 def ask_gpt():
     data = request.json
     question = data.get('question')
 
     if question:
-        # Use the OpenAI client to generate a response
-        response = client.chat.completions.create(
-            model="gpt-4",
-            messages=[
-                {"role": "system", "content": "You are a friendly and knowledgeable visa assistant representing iVisa. Begin by warmly greeting the user: 'Hello, I’m your visa assistant from iVisa. How can I assist you today?' Provide clear, concise answers to their visa-related inquiries. At the end of each response, include: 'For further assistance, please contact one of our experts at iVisa by calling +1 (510)-288-5920.'"},
-                {"role": "user", "content": question}
-            ],
-            max_tokens=500,
-            temperature=0.2
-        )
+        # Tokenize input
+        inputs = tokenizer(question, return_tensors='pt', padding=True, truncation=True, max_length=512).to(device)
 
-        # Fetch the assistant's reply from the response
-        answer = response.choices[0].message.content.strip()
+        # Generate response from the model
+        outputs = model.generate(inputs['input_ids'], max_length=150, num_return_sequences=1, pad_token_id=tokenizer.eos_token_id)
 
-        return jsonify({"response": answer})  # Returning JSON
+        # Decode the generated response
+        answer = tokenizer.decode(outputs[0], skip_special_tokens=True)
+
+        return jsonify({"response": answer})  # Return the response as JSON
 
     return jsonify({"error": "No question provided."}), 400
 
