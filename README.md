@@ -6,7 +6,7 @@
 
 ## Overview
 
-This project is a Flask-based web application that acts as a visa assistant. The application uses OpenAI’s GPT model to answer visa-related questions in real-time. The assistant provides helpful guidance on visa application processes and travel-related queries. Users simply input their question, and the assistant responds with detailed information.
+This project is a Flask-based web application that acts as a visa assistant. The application uses OpenAI’s GPT model to answer visa-related questions in real-time. The assistant provides guidance on visa application processes and travel-related queries. Users simply input their question, and the assistant responds with detailed information.
 
 ## Key Features
 
